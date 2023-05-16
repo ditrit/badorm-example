@@ -48,9 +48,9 @@ func NewGORMDBConnection() (*gorm.DB, error) {
 			return database, nil
 		}
 
-		log.Println("Database connection failed with error %q", err.Error())
-		log.Println(
-			"Retrying database connection %d/%d in %ds",
+		log.Printf("Database connection failed with error %q\n]", err.Error())
+		log.Printf(
+			"Retrying database connection %d/%d in %ds\n",
 			numberRetry+1, retryAmount, retryTime,
 		)
 		time.Sleep(time.Duration(retryTime) * time.Second)
