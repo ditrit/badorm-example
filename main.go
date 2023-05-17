@@ -19,6 +19,7 @@ func main() {
 		// DB modules
 		fx.Provide(NewGORMDBConnection),
 		// activate BaDORM
+		fx.Provide(GetModels),
 		badorm.BaDORMModule,
 
 		// start example data
@@ -57,4 +58,15 @@ func NewGORMDBConnection() (*gorm.DB, error) {
 	}
 
 	return nil, err
+}
+
+func GetModels() badorm.GetModelsResult {
+	return badorm.GetModelsResult{
+		Models: []any{
+			models.Product{},
+			models.Company{},
+			models.Seller{},
+			models.Sale{},
+		},
+	}
 }
