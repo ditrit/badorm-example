@@ -8,14 +8,12 @@ import (
 	"github.com/ditrit/badorm-example/fx/models"
 	"github.com/google/uuid"
 	"go.uber.org/fx"
-	"go.uber.org/zap"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
 
 func main() {
 	fx.New(
-		fx.Provide(NewLogger),
 		// DB modules
 		fx.Provide(NewGormDBConnection),
 		// activate BaDORM
@@ -31,10 +29,6 @@ func main() {
 		fx.Provide(CreateCRUDObjects),
 		fx.Invoke(QueryCRUDObjects),
 	).Run()
-}
-
-func NewLogger() (*zap.Logger, error) {
-	return zap.NewDevelopment()
 }
 
 func NewGormDBConnection() (*gorm.DB, error) {
