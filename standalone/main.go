@@ -17,14 +17,12 @@ func main() {
 		panic(err)
 	}
 
-	listOfModels := []any{
+	err = gormDB.AutoMigrate(
 		models.Product{},
 		models.Company{},
 		models.Seller{},
 		models.Sale{},
-	}
-
-	err = badorm.AutoMigrate(listOfModels, gormDB)
+	)
 	if err != nil {
 		panic(err)
 	}
