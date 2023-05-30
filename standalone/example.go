@@ -5,9 +5,9 @@ import (
 	"log"
 
 	"github.com/ditrit/badaas/badorm"
-	"github.com/ditrit/badorm-example/models"
+	"github.com/ditrit/badorm-example/standalone/conditions"
+	"github.com/ditrit/badorm-example/standalone/models"
 	"github.com/google/uuid"
-	"go.uber.org/fx"
 	"gorm.io/gorm"
 )
 
@@ -96,15 +96,11 @@ func CreateCRUDObjects(
 }
 
 func QueryCRUDObjects(
-	_ []*models.Product,
 	crudProductService badorm.CRUDService[models.Product, uuid.UUID],
-	shutdowner fx.Shutdowner,
 ) {
 	log.Println("Products with int = 1 are:")
 	result, err := crudProductService.GetEntities(
-		map[string]any{
-			"int": 1.0,
-		},
+		conditions.ProductInt(1),
 	)
 	if err != nil {
 		log.Panicln(err)
@@ -112,5 +108,4 @@ func QueryCRUDObjects(
 	for _, product := range result {
 		fmt.Printf("%+v\n", product)
 	}
-	shutdowner.Shutdown()
 }

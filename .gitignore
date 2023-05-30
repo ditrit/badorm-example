@@ -27,3 +27,5 @@ go.work
 _temp
 
 .cockroach-data
+
+*_conditions.go

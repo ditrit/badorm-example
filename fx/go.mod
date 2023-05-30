@@ -1,9 +1,9 @@
-module github.com/ditrit/badorm-example
+module github.com/ditrit/badorm-example/fx
 
 go 1.18
 
 require (
-	github.com/ditrit/badaas v0.0.0-20230517083504-e5c49476f4e6
+	github.com/ditrit/badaas v0.0.0-20230530141046-21471821e1ac
 	github.com/google/uuid v1.3.0
 	go.uber.org/fx v1.19.3
 	go.uber.org/zap v1.24.0

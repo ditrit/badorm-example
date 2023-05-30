@@ -5,7 +5,7 @@ import (
 	"time"
 
 	"github.com/ditrit/badaas/badorm"
-	"github.com/ditrit/badorm-example/models"
+	"github.com/ditrit/badorm-example/fx/models"
 	"github.com/google/uuid"
 	"go.uber.org/fx"
 	"go.uber.org/zap"
@@ -17,7 +17,7 @@ func main() {
 	fx.New(
 		fx.Provide(NewLogger),
 		// DB modules
-		fx.Provide(NewGORMDBConnection),
+		fx.Provide(NewGormDBConnection),
 		// activate BaDORM
 		fx.Provide(GetModels),
 		badorm.BaDORMModule,
@@ -37,7 +37,7 @@ func NewLogger() (*zap.Logger, error) {
 	return zap.NewDevelopment()
 }
 
-func NewGORMDBConnection() (*gorm.DB, error) {
+func NewGormDBConnection() (*gorm.DB, error) {
 	dsn := "user=root password=postgres host=localhost port=26257 sslmode=disable dbname=badaas_db"
 	var err error
 	retryAmount := 10
