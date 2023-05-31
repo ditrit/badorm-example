@@ -6,7 +6,6 @@ import (
 
 	"github.com/ditrit/badaas/badorm"
 	"github.com/ditrit/badorm-example/fx/models"
-	"github.com/google/uuid"
 	"go.uber.org/fx"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -21,10 +20,10 @@ func main() {
 		badorm.BaDORMModule,
 
 		// start example data
-		badorm.GetCRUDServiceModule[models.Company, uuid.UUID](),
-		badorm.GetCRUDServiceModule[models.Product, uuid.UUID](),
-		badorm.GetCRUDServiceModule[models.Seller, uuid.UUID](),
-		badorm.GetCRUDServiceModule[models.Sale, uuid.UUID](),
+		badorm.GetCRUDServiceModule[models.Company](),
+		badorm.GetCRUDServiceModule[models.Product](),
+		badorm.GetCRUDServiceModule[models.Seller](),
+		badorm.GetCRUDServiceModule[models.Sale](),
 
 		fx.Provide(CreateCRUDObjects),
 		fx.Invoke(QueryCRUDObjects),

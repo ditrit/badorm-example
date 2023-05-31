@@ -3,8 +3,8 @@ github.com/creack/pty v1.1.9/go.mod h1:oKZEueFk5CKHvIhNR5MUki03XCEU+Q6VDXinZuGJ3
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
-github.com/ditrit/badaas v0.0.0-20230530141046-21471821e1ac h1:pyujPr9pyIC82cGaw6M0LnrUknoxmDVA8d+iG+NQCpk=
-github.com/ditrit/badaas v0.0.0-20230530141046-21471821e1ac/go.mod h1:YUTmJ92kXJJ/GUvxVa5QbeNjxdL9b30wsZbXpP0YTlA=
+github.com/ditrit/badaas v0.0.0-20230531092833-ff51d3505d51 h1:A+ByrTieSeSk2nJeGaCUXEkVoFrMSz07oRjthNRccrQ=
+github.com/ditrit/badaas v0.0.0-20230531092833-ff51d3505d51/go.mod h1:YUTmJ92kXJJ/GUvxVa5QbeNjxdL9b30wsZbXpP0YTlA=
 github.com/elliotchance/pie/v2 v2.5.2 h1:jRENMmysCljhUmyT8ITKV0Atp6Lukm3XpeqaI87POsM=
 github.com/elliotchance/pie/v2 v2.5.2/go.mod h1:18t0dgGFH006g4eVdDtWfgFZPQEgl10IoEO8YWEq3Og=
 github.com/google/uuid v1.3.0 h1:t6JiXgmwXMjEs8VusXIJk2BXHsn+wx8BZdTaoZ5fu7I=
