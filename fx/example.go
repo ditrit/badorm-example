@@ -7,14 +7,13 @@ import (
 	"github.com/ditrit/badaas/badorm"
 	"github.com/ditrit/badorm-example/fx/conditions"
 	"github.com/ditrit/badorm-example/fx/models"
-	"github.com/google/uuid"
 	"go.uber.org/fx"
 	"gorm.io/gorm"
 )
 
 func CreateCRUDObjects(
 	db *gorm.DB,
-	crudProductRepository badorm.CRUDRepository[models.Product, uuid.UUID],
+	crudProductRepository badorm.CRUDRepository[models.Product, badorm.UUID],
 ) ([]*models.Product, error) {
 	products, err := crudProductRepository.GetAll(db)
 	if err != nil {
@@ -98,7 +97,7 @@ func CreateCRUDObjects(
 
 func QueryCRUDObjects(
 	_ []*models.Product,
-	crudProductService badorm.CRUDService[models.Product, uuid.UUID],
+	crudProductService badorm.CRUDService[models.Product, badorm.UUID],
 	shutdowner fx.Shutdowner,
 ) {
 	log.Println("Products with int = 1 are:")

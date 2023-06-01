@@ -6,7 +6,6 @@ import (
 
 	"github.com/ditrit/badaas/badorm"
 	"github.com/ditrit/badorm-example/standalone/models"
-	"github.com/google/uuid"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -27,7 +26,7 @@ func main() {
 		panic(err)
 	}
 
-	crudProductService, crudProductRepository := badorm.GetCRUD[models.Product, uuid.UUID](gormDB)
+	crudProductService, crudProductRepository := badorm.GetCRUD[models.Product, badorm.UUID](gormDB)
 
 	CreateCRUDObjects(gormDB, crudProductRepository)
 	QueryCRUDObjects(crudProductService)
