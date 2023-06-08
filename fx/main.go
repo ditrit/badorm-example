@@ -42,8 +42,6 @@ func NewGormDBConnection() (*gorm.DB, error) {
 	)
 }
 
-// TODO el depency injector de google
-
 func GetModels() badorm.GetModelsResult {
 	return badorm.GetModelsResult{
 		Models: []any{

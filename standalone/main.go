@@ -29,7 +29,6 @@ func main() {
 
 	CreateCRUDObjects(gormDB, crudProductRepository)
 	QueryCRUDObjects(crudProductService)
-	// TODO ejemplo unsafe
 }
 
 func NewGormDBConnection() (*gorm.DB, error) {
