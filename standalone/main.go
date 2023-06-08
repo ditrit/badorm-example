@@ -1,13 +1,11 @@
 package main
 
 import (
-	"log"
 	"time"
 
 	"github.com/ditrit/badaas/badorm"
 	"github.com/ditrit/badorm-example/standalone/models"
-	"github.com/google/uuid"
-	"gorm.io/driver/postgres"
+	"go.uber.org/zap"
 	"gorm.io/gorm"
 )
 
@@ -27,31 +25,21 @@ func main() {
 		panic(err)
 	}
 
-	crudProductService, crudProductRepository := badorm.GetCRUD[models.Product, uuid.UUID](gormDB)
+	crudProductService, crudProductRepository := badorm.GetCRUD[models.Product, badorm.UUID](gormDB)
 
 	CreateCRUDObjects(gormDB, crudProductRepository)
 	QueryCRUDObjects(crudProductService)
 }
 
 func NewGormDBConnection() (*gorm.DB, error) {
-	dsn := "user=root password=postgres host=localhost port=26257 sslmode=disable dbname=badaas_db"
-	var err error
-	retryAmount := 10
-	retryTime := 5
-	for numberRetry := 0; numberRetry < retryAmount; numberRetry++ {
-		database, err := gorm.Open(postgres.Open(dsn))
-		if err == nil {
-			log.Println("Database connection is active")
-			return database, nil
-		}
-
-		log.Printf("Database connection failed with error %q\n]", err.Error())
-		log.Printf(
-			"Retrying database connection %d/%d in %ds\n",
-			numberRetry+1, retryAmount, retryTime,
-		)
-		time.Sleep(time.Duration(retryTime) * time.Second)
+	logger, err := zap.NewDevelopment()
+	if err != nil {
+		return nil, err
 	}
 
-	return nil, err
+	return badorm.ConnectToDialector(
+		logger,
+		badorm.CreatePostgreSQLDialector("localhost", "root", "postgres", "disable", "badaas_db", 26257),
+		10, time.Duration(5)*time.Second,
+	)
 }
