@@ -102,7 +102,7 @@ func QueryCRUDObjects(
 ) {
 	log.Println("Products with int = 1 are:")
 	result, err := crudProductService.GetEntities(
-		conditions.ProductInt(1),
+		conditions.ProductInt(badorm.Eq(1)),
 	)
 	if err != nil {
 		log.Panicln(err)
