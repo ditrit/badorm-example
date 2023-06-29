@@ -29,3 +29,4 @@ _temp
 .cockroach-data
 
 *_conditions.go
+**/models/badorm.go
